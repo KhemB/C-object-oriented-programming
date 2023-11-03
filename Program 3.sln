@@ -1,25 +1,85 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32126.317
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program 3", "Program 3\Program 3.csproj", "{3A1F66C9-B4AB-4949-9BA5-20144E3872CE}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3A1F66C9-B4AB-4949-9BA5-20144E3872CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A1F66C9-B4AB-4949-9BA5-20144E3872CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3A1F66C9-B4AB-4949-9BA5-20144E3872CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3A1F66C9-B4AB-4949-9BA5-20144E3872CE}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {EA1CEBAD-C094-40EA-B73A-DB0F8E65C29F}
-	EndGlobalSection
-EndGlobal
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Program_3
+{
+    public partial class Program3 : Form
+    {
+        public Program3()
+        {
+            InitializeComponent();
+            
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           // array
+            string[] gardens = { "Premium", "Standard", "Discount" };
+            double[] flowers = { 10001, 10002, 10003, 10004, 10005, 10006, 10007 };
+            double[] cost = { 7.87, 9.51, 10.73, 9.99, 11.99, 5, 4.58 };
+            double flowerinput, quantities;
+            string gardeninput = comboBox1.Text;
+            double.TryParse(entreetxt.Text, out flowerinput);
+            double.TryParse(quantitytxt.Text, out quantities);
+            double flowercosts = 0, baseadjusted = 0, discount = 0, total = 0;
+
+            for (int i = 0; i <= flowers.Length; i++)
+            {
+                if (flowerinput == flowers[i])
+                {
+                    flowercosts = cost[i];
+                    break; 
+                }
+            }
+
+            flowercosts = flowercosts * quantities;
+
+            if (gardeninput == gardens[0].ToString())
+            {
+                baseadjusted = flowercosts + (10 * flowercosts) / 100;
+            }
+            else if (gardeninput.Equals(gardens[2].ToString()))
+            {
+                baseadjusted = flowercosts - (10 * flowercosts) / 100;
+            }
+            else
+            { 
+                baseadjusted = flowercosts;
+            }
+
+            if (quantities >= 6 && quantities <= 15)
+            {
+                discount = 5;
+            }
+            else if (quantities >= 16 && quantities <= 20)
+            {
+                discount = 10;
+            }
+            else if (quantities > 20)
+            {
+
+                discount = 15;
+            }
+
+            total = baseadjusted - (baseadjusted * discount) / 100; 
+
+            flowertxt.Text = $"{flowercosts:C}"; 
+            basetxt.Text = $"{baseadjusted:C}";
+            discounttxt.Text = $"{discount:F2}%";
+            totaltxt.Text = $"{total:C}";
+
+        }
+    }
+}

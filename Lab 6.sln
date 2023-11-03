@@ -1,25 +1,70 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32126.317
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab 6", "Lab 6\Lab 6.csproj", "{C83E3720-EE35-422B-8284-C97C11DA9551}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C83E3720-EE35-422B-8284-C97C11DA9551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C83E3720-EE35-422B-8284-C97C11DA9551}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C83E3720-EE35-422B-8284-C97C11DA9551}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C83E3720-EE35-422B-8284-C97C11DA9551}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {91FC07CA-4091-4D76-A3AF-447CA18C425C}
-	EndGlobalSection
-EndGlobal
+//Grade ID: R2202
+//3/13/2022
+//Lab6
+//CIS199-2
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Lab_6
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //pattern a
+            const int MAX_ROWS = 10;
+            Console.WriteLine("Pattern A");
+            for (int i = 1; i <= MAX_ROWS; i++)
+            {
+                for (int star = 1; star <= i; star++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+            //pattern b
+            Console.WriteLine("Pattern B");
+            for (int i = MAX_ROWS; i >= 1; i--)
+            {
+                for (int star = 1; star <= i; star++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+            //pattern c
+            Console.WriteLine("Pattern C");
+            for (int i = 1; i <= MAX_ROWS; i++)
+            {
+                for (int space = i; space > 1; space--)
+                {
+                    Console.Write(" ");
+                }
+                for (int star = MAX_ROWS; star > i; star--)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+            //pattern d
+            Console.WriteLine("Pattern D");
+            for (int i = 1; i <= MAX_ROWS; i++)
+            {
+                for (int space = MAX_ROWS - 1; space >= i; space--)
+                {
+                    Console.Write(" ");
+                }
+                for (int star = 1; star <= i; star++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+
+            Console.ReadLine();
+        }
+    }
+}

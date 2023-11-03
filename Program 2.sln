@@ -1,25 +1,75 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32126.317
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program 2", "Program 2\Program 2.csproj", "{EFCA50A3-5CD3-43B7-91C2-5E39039D83D6}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EFCA50A3-5CD3-43B7-91C2-5E39039D83D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EFCA50A3-5CD3-43B7-91C2-5E39039D83D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EFCA50A3-5CD3-43B7-91C2-5E39039D83D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EFCA50A3-5CD3-43B7-91C2-5E39039D83D6}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5DA40FFD-ADB6-4B0D-9469-DDB6880EF719}
-	EndGlobalSection
-EndGlobal
+//Grade ID: R2202
+//3/11/2022
+//Program2
+//CIS199-2
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Program_2
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void calbutton_Click(object sender, EventArgs e)
+        {
+            //declaring variables and intgers
+            double nightcounttotal = 0;
+            double costtotal = 0;
+            double starfactor = 0;
+            double guestcountfee = 0;
+
+            if(int.TryParse(textstars.Text, out int Star))
+            if (int.TryParse(guesttext.Text, out int guestnum) && guestnum >= 1 && guestnum <= 7)
+            {
+                if (int.TryParse(nighttext.Text, out int nightnum))
+                {
+                    if (guestnum == 1)
+                        guestcountfee = 100;
+                    if (guestnum == 2)
+                        guestcountfee = 150;
+                    if (guestnum == 3)
+                        guestcountfee = 250;
+                    if (guestnum >= 4 && guestnum <= 7)
+                        guestcountfee = 400;
+
+                    if (nightnum >= 1 && nightnum <= 6)
+                        nightcounttotal = 100;
+                    if (nightnum >= 7 && nightnum <= 30)
+                        nightcounttotal = 75;
+                    if (nightnum > 31)
+                        nightcounttotal = 25 ;
+
+
+                    if (Star == 1)
+                        starfactor = 1;
+                    if (Star == 2)
+                        starfactor = 1.5;
+                    if (Star == 3)
+                        starfactor = 2.5;
+                    if (Star == 4)
+                        starfactor = 3;
+                    if (Star == 5)
+                        starfactor = 4;
+
+                    costtotal = (guestcountfee + nightcounttotal*nightnum) * starfactor;
+                    costlabel.Text = $"{costtotal:C}";
+                }
+                else
+                    MessageBox.Show("");
+            }
+            else
+                MessageBox.Show("");
+        }
+    }
+}

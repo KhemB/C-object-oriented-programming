@@ -1,30 +1,104 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32126.317
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program1", "Program1\Program1.csproj", "{A0ECFA46-A209-48F3-A8B2-FA1BBA11B378}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{728E4714-0B01-4A3A-8148-C6F858AF6FFA}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A0ECFA46-A209-48F3-A8B2-FA1BBA11B378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0ECFA46-A209-48F3-A8B2-FA1BBA11B378}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0ECFA46-A209-48F3-A8B2-FA1BBA11B378}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0ECFA46-A209-48F3-A8B2-FA1BBA11B378}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AEFC7231-0721-499F-AD2E-A58763D34AA8}
-	EndGlobalSection
-EndGlobal
+//R2202
+//Program1
+//Feb 15th
+//Cis199-2
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Program1
+{
+    public partial class Program1 : Form
+    {
+        public Program1()
+        {
+            InitializeComponent();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void calculatebutton_Click(object sender, EventArgs e)
+        {
+            double ft1;
+            double ft2;
+            double ft3;
+            double sq1;
+            double sq2;
+            double total1;
+            double ext;
+            double l1;
+            double ma1;
+            double total2;
+
+                int Window;
+                Window = int.Parse(window.Text);
+                if (Window == 0)
+                { Window = (0 * 100);
+            }
+                else if (Window == 1)
+                { Window = (1 * 100); 
+            }
+
+            ft1 = double.Parse(font.Text);
+            ft2 = double.Parse(side.Text);
+            ft3 = double.Parse(ht.Text);
+
+            sq1 = double.Parse(drywall.Text);
+            sq2 = double.Parse(labor.Text);
+
+            total1 = (ft1 * ft3) + ft1 * ft1 + (ft2 * ft3) + ft2 * ft3;
+            ext = (total1 * 1.1);
+            l1 = ext * sq2;
+            ma1 = ext * sq1;
+            total2 = Window + l1 + ma1;
+
+            sqfeet.Text = $"(total1)";
+            tenper.Text = $"(ext)";
+            laborc.Text = $"(l1)";
+            matc.Text = $"(ma1)";
+            totalc.Text = $"(total2)";
+
+            sqfeet.Text = total1.ToString("0,000.00");
+            tenper.Text = ext.ToString("0,000.00");
+            laborc.Text = l1.ToString("0, 000.00");
+            matc.Text = ma1.ToString("0,000.00");
+            totalc.Text = total2.ToString("0,000.00");
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+    }
+}
